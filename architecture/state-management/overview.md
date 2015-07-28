@@ -50,3 +50,28 @@ Query strings provide a simple but limited way to maintain state information. Fo
 ASP.NET offers you a variety of ways to maintain state information on the server, rather than persisting information on the client.
 
 ### Application State
+
+ASP.NET allows you to save values using application state — which is an instance of the HttpApplicationState class — for each active Web application. Application state is a global storage mechanism that is accessible from all pages in the Web application.
+
+Application state is stored in a key/value dictionary that is created during each request to a specific URL. You can add your application-specific information to this structure to store it between page requests.
+
+### Session State
+
+ASP.NET allows you to save values by using session state — which is an instance of the HttpSessionState class — for each active Web-application session.
+
+Session state is similar to application state, except that it is scoped to the current browser session. If different users are using your application, each user session will have a different session state.
+
+Session state is structured as a key/value dictionary for storing session-specific information that needs to be maintained between server round trips and between requests for pages.
+
+You can use session state to accomplish the following tasks:
+* Uniquely identify browser or client-device requests and map them to an individual session instance on the server.
+* Store session-specific data on the server for use across multiple browser or client-device requests within the same session.
+* Raise appropriate session management events. In addition, you can write application code leveraging these events.
+
+### Profile Properties
+
+SP.NET provides a feature called profile properties, which allows you to store user-specific data. This feature is similar to session state, except that the profile data is not lost when a user's session expires. The profile-properties feature uses an ASP.NET profile, which is stored in a persistent format and associated with an individual user. The ASP.NET profile allows you to easily manage user information without requiring you to create and maintain your own database. In addition, the profile makes the user information available using a strongly typed API that you can access from anywhere in your application. You can store objects of any type in the profile. The ASP.NET profile feature provides a generic storage system that allows you to define and maintain almost any kind of data while still making the data available in a type-safe manner.
+
+To use profile properties, you must configure a profile provider. ASP.NET includes a SqlProfileProvider class that allows you to store profile data in a SQL database, but you can also create your own profile provider class that stores profile data in a custom format and to a custom storage mechanism such as an XML file, or even to a web service.
+
+Because data that is placed in profile properties is not stored in application memory, it is preserved through Internet Information Services (IIS) restarts and worker-process restarts without losing data.
